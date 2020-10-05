@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="7058" started-at="2020-10-05T02:31:37 EDT" finished-at="2020-10-05T02:31:44 EDT">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="7058" started-at="2020-10-05T02:31:37 EDT" finished-at="2020-10-05T02:31:44 EDT">
+      <class name="com.automationlabs.tests.WelcomePageTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.automationlabs.tests.WelcomePageTest@49fc609f]" name="setUp" is-config="true" duration-ms="5169" started-at="2020-10-05T02:31:37 EDT" finished-at="2020-10-05T02:31:43 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="closePopUpTest()[pri:0, instance:com.automationlabs.tests.WelcomePageTest@49fc609f]" name="closePopUpTest" duration-ms="1688" started-at="2020-10-05T02:31:43 EDT" finished-at="2020-10-05T02:31:44 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closePopUpTest -->
+        <test-method status="PASS" signature="verifywelcomepageTitle_Test()[pri:1, instance:com.automationlabs.tests.WelcomePageTest@49fc609f]" name="verifywelcomepageTitle_Test" duration-ms="15" started-at="2020-10-05T02:31:44 EDT" finished-at="2020-10-05T02:31:44 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifywelcomepageTitle_Test -->
+        <test-method status="PASS" signature="verify_naveenAutomationlabs_link_test()[pri:2, instance:com.automationlabs.tests.WelcomePageTest@49fc609f]" name="verify_naveenAutomationlabs_link_test" duration-ms="47" started-at="2020-10-05T02:31:44 EDT" finished-at="2020-10-05T02:31:44 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_naveenAutomationlabs_link_test -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.automationlabs.tests.WelcomePageTest@49fc609f]" name="tearDown" is-config="true" duration-ms="116" started-at="2020-10-05T02:31:44 EDT" finished-at="2020-10-05T02:31:44 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.automationlabs.tests.WelcomePageTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
