@@ -2,6 +2,6 @@ package com.automationlabs.pages;
 
 import com.automationlabs.base.BasePage;
 
-public class Contac_usPage extends BasePage{
+public class NaveenPage extends BasePage {
 
 }

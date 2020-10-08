@@ -13,7 +13,6 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-
 /**
  * 
  * @author jey
@@ -23,34 +22,31 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BasePage {
 
 	/**
-	 * this class is responsible of the web driver concept
-	 *  so all the initialization form will take browser from this class
+	 * this class is responsible of the web driver concept so all the initialization
+	 * form will take browser from this class
 	 */
-
 
 	WebDriver driver;
 	Properties prop;
 
 	public WebDriver initialize_driver(String browserName) {
 
-
-		if(browserName.equalsIgnoreCase("chrome")) {
+		if (browserName.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 
-		}
-		else if (browserName.equalsIgnoreCase("firefox")) {
+		} else if (browserName.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 
-		}
-		else if (browserName.equalsIgnoreCase("safari")) {
+		} else if (browserName.equalsIgnoreCase("safari")) {
 			WebDriverManager.getInstance(SafariDriver.class).setup();
 			driver = new SafariDriver();
 
 		}
 
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 
@@ -58,21 +54,17 @@ public class BasePage {
 
 		return driver;
 
-
-
-
 	}
-/**
- * this method is one of most important method in framework which is 
- * giving us complete control of the config file 
- * FileInputStream class make the connection with config file 
- * prop.load method loading FileInputStream 
- * 
- * @return properties 
- */
+
+	/**
+	 * this method is one of most important method in framework which is giving us
+	 * complete control of the config file FileInputStream class make the connection
+	 * with config file prop.load method loading FileInputStream
+	 * 
+	 * @return properties
+	 */
 
 	public Properties initialize_prop() {
-
 
 		prop = new Properties();
 		try {
@@ -84,12 +76,8 @@ public class BasePage {
 			e.printStackTrace();
 		}
 
-
 		return prop;
 
-
 	}
-
-
 
 }
