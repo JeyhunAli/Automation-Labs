@@ -29,7 +29,9 @@ public class BasePage {
 	WebDriver driver;
 	Properties prop;
 
-	public WebDriver initialize_driver(String browserName) {
+	public WebDriver initialize_driver(Properties prop) {
+		
+		String browserName = prop.getProperty("browser");
 
 		if (browserName.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
@@ -50,7 +52,7 @@ public class BasePage {
 		driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 
-		driver.get("https://naveenautomationlabs.com/");
+		driver.get(prop.getProperty("url"));
 
 		return driver;
 

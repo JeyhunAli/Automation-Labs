@@ -1,4 +1,6 @@
-package com.automationlabs.tests;
+ package com.automationlabs.tests;
+
+import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -15,16 +17,19 @@ public class ContacUsPageTest {
 
 	WebDriver driver;
 	BasePage basepage;
+	Properties prop;
 	WelcomePage welcomepage;
 	ContacUsPage contactsPage;
 
+	
 	@BeforeTest
 	public void setUp() {
 		basepage = new BasePage();
-		driver = basepage.initialize_driver("chrome");
+		prop = basepage.initialize_prop();
+		driver = basepage.initialize_driver(prop);
 		welcomepage = new WelcomePage(driver);
 		welcomepage.close_popUp();
-	   contactsPage = welcomepage.clickContactUsButton();
+	    contactsPage = welcomepage.clickContactUsButton();
 
 	}
 
@@ -73,6 +78,7 @@ public class ContacUsPageTest {
 		contactsPage.clicksearchbutton();
 	}
 
+	
 	@AfterTest(enabled = false)
 	public void tearDown() {
 		driver.quit();

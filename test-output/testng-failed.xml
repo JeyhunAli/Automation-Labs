@@ -6,8 +6,12 @@
       <class name="com.automationlabs.tests.ContacUsPageTest">
         <methods>
           <include name="tearDown"/>
+          <include name="SearchKeywordTest"/>
           <include name="setUp"/>
           <include name="clicksearchbuttonTest"/>
+          <include name="getLinkTest"/>
+          <include name="searchTextFieldTest"/>
+          <include name="ContactusPageTitleTest"/>
         </methods>
       </class> <!-- com.automationlabs.tests.ContacUsPageTest -->
     </classes>

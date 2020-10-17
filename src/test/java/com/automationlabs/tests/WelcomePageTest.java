@@ -1,11 +1,10 @@
 package com.automationlabs.tests;
 
+import java.util.Properties;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -17,12 +16,17 @@ public class WelcomePageTest {
 
 	WebDriver driver;
 	BasePage basepage;
+	Properties prop;
 	WelcomePage welcomepage;
 
+	
 	@BeforeTest
 	public void setUp() {
 		basepage = new BasePage();
-		driver = basepage.initialize_driver("chrome");
+		prop = basepage.initialize_prop();
+		//it will create obj of prop class, it will create file input stream, it will make connection 
+		//config.properties file and then it will load the properties
+		driver = basepage.initialize_driver(prop);
 		welcomepage = new WelcomePage(driver);
 
 	}
@@ -56,6 +60,7 @@ public class WelcomePageTest {
 		welcomepage.clickContactUsButton();
 	}
 
+	
 	@AfterTest
 	public void tearDown() {
 		driver.quit();
