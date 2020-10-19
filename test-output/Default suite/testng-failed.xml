@@ -3,17 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.automationlabs.tests.ContacUsPageTest">
+      <class name="com.automationlabs.tests.NaveenPageTest">
         <methods>
           <include name="tearDown"/>
-          <include name="SearchKeywordTest"/>
           <include name="setUp"/>
-          <include name="clicksearchbuttonTest"/>
-          <include name="getLinkTest"/>
-          <include name="searchTextFieldTest"/>
-          <include name="ContactusPageTitleTest"/>
+          <include name="Link_NaveenAutomationLabs_Test"/>
+          <include name="click_and_GO_Meeting_Test"/>
+          <include name="lifeMottoText_Test"/>
+          <include name="NaveenPageTitleTest"/>
+          <include name="NavenPageSetUP"/>
         </methods>
-      </class> <!-- com.automationlabs.tests.ContacUsPageTest -->
+      </class> <!-- com.automationlabs.tests.NaveenPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

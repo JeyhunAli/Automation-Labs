@@ -1,87 +1,72 @@
- package com.automationlabs.tests;
+package com.automationlabs.tests;
 
-import java.util.Properties;
-
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.automationlabs.base.BasePage;
+import com.automationlabs.base.BaseTest;
 import com.automationlabs.pages.ContacUsPage;
-import com.automationlabs.pages.WelcomePage;
 import com.automationlabs.utility.ConstantsUtility;
 
-public class ContacUsPageTest {
+public class ContacUsPageTest extends BaseTest {
 
-	WebDriver driver;
-	BasePage basepage;
-	Properties prop;
-	WelcomePage welcomepage;
 	ContacUsPage contactsPage;
-
 	
-	@BeforeTest
-	public void setUp() {
-		basepage = new BasePage();
-		prop = basepage.initialize_prop();
-		driver = basepage.initialize_driver(prop);
-		welcomepage = new WelcomePage(driver);
+
+	@BeforeClass
+	public void setUpContactsUsPage() {
+
 		welcomepage.close_popUp();
-	    contactsPage = welcomepage.clickContactUsButton();
+		contactsPage = welcomepage.goClickContactUsButton();
+		
 
 	}
 
-	@Test(priority = 1)
+	@Test
 	public void ContactusPageTitleTest() {
 		String titletext = contactsPage.getContactusPageTitle();
-		System.out.println("ContactsUs Page title is: "+titletext);
+		System.out.println("ContactsUs Page title is: " + titletext);
 		Assert.assertEquals(titletext, ConstantsUtility.CONTACTS_PAGE_TITLE, "not found");
 
 	}
-	
+
 	@Test
 	public void ContactusPageHeaderTest() {
 		String headerText = contactsPage.getContactusPageHeader();
 		System.out.println(headerText);
 		Assert.assertEquals(headerText, ConstantsUtility.CONTACS_PAGE_HEADER, "not found");
 	}
-	
+
 	@Test
 	public void IncaseTextTest() {
 		String InCaseText = contactsPage.getIncasetext();
-		System.out.println(" in case text in contactsUs page is:  "+InCaseText);
+		System.out.println(" in case text in contactsUs page is:  " + InCaseText);
 	}
 	
-	
-	@Test
+    @Test(enabled = true)
 	public void getLinkTest() {
 		String linkText = contactsPage.getLink();
-		System.out.println("linkText on ContactsUs page is: " + linkText);
+		System.out.println(linkText);
+		Assert.assertEquals(linkText, ConstantsUtility.CONTACTS_LINK_TEXT, "not found");
+
 	}
-	
+
 	@Test
-	public void SearchKeywordTest () {
+	public void SearchKeywordTest() {
 		String searchKeyword = contactsPage.getSearchKeyword();
 		System.out.println("searchKeyword in contacts us page is " + searchKeyword);
 	}
-	
+
 	@Test
 	public void searchTextFieldTest() {
-		contactsPage.getsearchTextField("jenkins");
-		
-	}
-	
-	@Test(enabled = true)
-	public void clicksearchbuttonTest() {
-		contactsPage.clicksearchbutton();
-	}
+		contactsPage.getsearchTextField(prop.getProperty("value"));
 
-	
-	@AfterTest(enabled = false)
-	public void tearDown() {
-		driver.quit();
 	}
+	
+//	@Test(enabled = true)
+//	public void clicksearchbuttonTest() {
+//		contactsPage.clicksearchbutton();
+//	}
 
 }
+

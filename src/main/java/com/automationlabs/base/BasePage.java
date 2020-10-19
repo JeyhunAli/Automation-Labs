@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import com.automationlabs.utility.WebElementUtil;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
@@ -28,6 +30,8 @@ public class BasePage {
 
 	WebDriver driver;
 	Properties prop;
+	public WebElementUtil eleUtil;
+
 
 	public WebDriver initialize_driver(Properties prop) {
 		

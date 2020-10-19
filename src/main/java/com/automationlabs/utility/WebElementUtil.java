@@ -63,7 +63,12 @@ public class WebElementUtil {
 		return getElement(locator).getText();
 
 	}
-
+	
+	public String doGetTitle() {
+		return driver.getTitle();
+	}
+	
+	
 	// ************************************<<<<<<<<<<<<<<<<<<Select, DropDown
 	// utility>>>>>>>>>>>>>>>>>>***********************************
 
@@ -71,6 +76,7 @@ public class WebElementUtil {
 
 		Select select = new Select(getElement(locator));
 		select.selectByVisibleText(Value);
+
 
 	}
 
@@ -415,6 +421,15 @@ public class WebElementUtil {
 		element.click();
 
 	}
+
+	public void sendKeysWhenReady(By locator, int timeOut, String value) {
+		WebElement element = getElement(locator);
+		WebDriverWait wait = new WebDriverWait(driver, timeOut);
+		wait.until(ExpectedConditions.elementToBeClickable(locator));
+		element.sendKeys(value);
+	
+	}
+	
 
 	public String waitForContainsTitleToBePresent(String title, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, timeOut);

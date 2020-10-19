@@ -4,13 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.automationlabs.base.BasePage;
-import com.automationlabs.utility.ConstantsUtility;
 import com.automationlabs.utility.WebElementUtil;
 
 public class ContacUsPage extends BasePage {
 
 	private WebDriver driver;
-	WebElementUtil eleUtil = new WebElementUtil(driver);
 
 	// By contact = By.xpath("(//a[.='Contact Us'])[1]");
 	By header = By.cssSelector("h1.post-title.entry-title");
@@ -18,58 +16,65 @@ public class ContacUsPage extends BasePage {
 	By link = By.linkText("https://www.facebook.com/groups/naveenqtpexpert");
 	By searchKeyword = By.xpath("//div/h3[@class='widget-title' and contains(text(), 'Search with Keyword')]");
 	By searchtext = By.xpath("(//div/input[@id='s'])[2]");
-	By searchButton = By.xpath("(//input[@type='submit' and @id='searchsubmit' and @value= 'Search'])[2]");
+	By searchButton = By.xpath("(//input[@id='searchsubmit'])[last()]");
 
 	public ContacUsPage(WebDriver driver) {
 		this.driver = driver;
+		eleUtil = new WebElementUtil(driver);
 
 	}
 
-//	public void clickContactUsButton() {
-//		if (driver.findElement(contact).isDisplayed()) {
-//			driver.findElement(contact).click();
-//
-//		}
-//	}
-
 	public String getContactusPageTitle() {
-		
+		// return
+		// eleUtil.waitFor_Full_TitleToBePresent(ConstantsUtility.CONTACTS_PAGE_TITLE,
+		// 10);
 		return driver.getTitle();
+
 	}
 
 	public String getContactusPageHeader() {
-		//eleUtil.waitForElementPresent(header, 5);
-		return driver.findElement(header).getText();
+          return eleUtil.getElement(header).getText();
 
 	}
 
 	public String getIncasetext() {
-		//eleUtil.waitForElementToBeVisible(inCase, 5);
-		if (driver.findElement(inCase).isDisplayed()) {
+         if (eleUtil.getElement(inCase).isDisplayed()) {
 		}
 		return driver.findElement(inCase).getText();
 
 	}
 
 	public String getLink() {
-		if (driver.findElement(link).isDisplayed()) {
-		}
-		return driver.findElement(link).getText();
+        if (eleUtil.getElement(link).isDisplayed()) {
 
+		}
+		return eleUtil.doGetText(link);
 	}
 
 	public String getSearchKeyword() {
-		return driver.findElement(searchKeyword).getText();
+		return eleUtil.getElement(searchKeyword).getText();
+	}
+	
+	
+
+	public NaveenPage getsearchTextField(String searchtext) {
+         eleUtil.doSendkeys(this.searchtext, searchtext);
+         clicksearchbutton();
+         return new NaveenPage(driver);
 	}
 
-	public void getsearchTextField(String value) {
-		driver.findElement(searchtext).sendKeys(value);
+//	public NaveenPage goToNaveenPage() {
+//		clicksearchbutton();
+//		return new NaveenPage(driver);
+//	}
 
-	}
-
-	public void clicksearchbutton() {
-		eleUtil.isElementDisplayed_ThenClick(searchButton, 10);
-		//eleUtil.getElement(searchButton).click();
+	private void clicksearchbutton() {
+		try {
+			Thread.sleep(4);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		driver.findElement(searchButton).click();
 	}
 
 }

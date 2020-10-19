@@ -1,35 +1,13 @@
 package com.automationlabs.tests;
 
-import java.util.Properties;
-
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.automationlabs.base.BasePage;
-import com.automationlabs.pages.WelcomePage;
+import com.automationlabs.base.BaseTest;
 import com.automationlabs.utility.ConstantsUtility;
 
-public class WelcomePageTest {
-
-	WebDriver driver;
-	BasePage basepage;
-	Properties prop;
-	WelcomePage welcomepage;
-
+public class WelcomePageTest extends BaseTest{
 	
-	@BeforeTest
-	public void setUp() {
-		basepage = new BasePage();
-		prop = basepage.initialize_prop();
-		//it will create obj of prop class, it will create file input stream, it will make connection 
-		//config.properties file and then it will load the properties
-		driver = basepage.initialize_driver(prop);
-		welcomepage = new WelcomePage(driver);
-
-	}
 
 	@Test(priority = 3)
 	public void closePopUpTest() {
@@ -57,14 +35,11 @@ public class WelcomePageTest {
 
 	@Test(enabled = false)
 	public void clickContactUsButtonTest() {
-		welcomepage.clickContactUsButton();
+		welcomepage.goClickContactUsButton();
 	}
 
 	
-	@AfterTest
-	public void tearDown() {
-		driver.quit();
-	}
+	
 	
 
 }

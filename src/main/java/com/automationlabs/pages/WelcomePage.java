@@ -2,6 +2,7 @@ package com.automationlabs.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import com.automationlabs.base.BasePage;
 import com.automationlabs.utility.ConstantsUtility;
@@ -18,7 +19,6 @@ import com.automationlabs.utility.WebElementUtil;
 public class WelcomePage extends BasePage {
 
 	private WebDriver driver;
-	WebElementUtil eleUtil = new WebElementUtil(driver);
 	JavaScriptUtil js = new JavaScriptUtil(driver);
 
 
@@ -33,34 +33,43 @@ public class WelcomePage extends BasePage {
 	// Constructor created
 	public WelcomePage(WebDriver driver) {
 		this.driver = driver;
+		eleUtil = new WebElementUtil(driver);
 	}
 	
-	public void close_popUp() {
-		driver.findElement(closelement).click();
+	public WebElement close_popUp() {
+		//driver.findElement(closelement).click();
+		WebElement closeele = eleUtil.getElement(closelement);
+		closeele.click();
+		return closeele;
 	}
 
 
 	public String getwelcomePageTitle() {
 		
 //		eleUtil.waitFor_Full_TitleToBePresent(ConstantsUtility.WELCOME_PAGE_TITLE, 6);
-		String title = driver.getTitle();
+		
+		String title = eleUtil.waitForContainsTitleToBePresent(ConstantsUtility.WELCOME_PAGE_TITLE, 0);
+		
 		System.out.println("The welcome page title is +" + title);
 		return title;
 	}
 
 	
 	public boolean naveenAutomationlabs_link() {
-		return driver.findElement(automationlabs).isDisplayed();
+		//return driver.findElement(automationlabs).isDisplayed();
+		return eleUtil.getElement(automationlabs).isDisplayed();
 
 	}
 
 	public boolean learnTechnology_Text() {
-		return driver.findElement(learnTechnology).isDisplayed();
+		//return driver.findElement(learnTechnology).isDisplayed();
+		return eleUtil.getElement(learnTechnology).isDisplayed();
 	}
 
 	
-	public ContacUsPage clickContactUsButton() {
-	driver.findElement(contact).click();
+	public ContacUsPage goClickContactUsButton() {
+	//driver.findElement(contact).click();
+	eleUtil.getElement(contact).click();
 		
 		return new ContacUsPage(driver);
 
