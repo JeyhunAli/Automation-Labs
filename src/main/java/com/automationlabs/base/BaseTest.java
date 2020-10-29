@@ -10,8 +10,6 @@ import com.automationlabs.pages.WelcomePage;
 
 public class BaseTest {
 	
-	
-
 	public WebDriver driver;
 	public BasePage basepage;
 	public Properties prop;

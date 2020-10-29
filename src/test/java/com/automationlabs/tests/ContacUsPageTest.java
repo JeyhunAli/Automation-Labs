@@ -16,7 +16,7 @@ public class ContacUsPageTest extends BaseTest {
 	@BeforeClass
 	public void setUpContactsUsPage() {
 
-		welcomepage.close_popUp();
+		//welcomepage.close_popUp();
 		contactsPage = welcomepage.goClickContactUsButton();
 		
 

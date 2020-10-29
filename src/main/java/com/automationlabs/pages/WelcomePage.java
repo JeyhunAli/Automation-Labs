@@ -37,10 +37,14 @@ public class WelcomePage extends BasePage {
 	}
 	
 	public WebElement close_popUp() {
-		//driver.findElement(closelement).click();
-		WebElement closeele = eleUtil.getElement(closelement);
-		closeele.click();
-		return closeele;
+		//eleUtil.waitForElementPresent(closelement, 5);
+		WebElement ele = driver.findElement(closelement);
+		ele.click();
+		return ele;
+//		WebElement closeele = eleUtil.getElement(closelement);
+//		closeele.click();
+//		return closeele;
+		
 	}
 
 

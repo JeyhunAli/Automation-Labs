@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -59,16 +60,28 @@ public class WebElementUtil {
 		getElement(locator).click();
 	}
 
+	public void docleartext(By locator) {
+		getElement(locator).clear();
+
+	}
+
+	public void doWaitWithThread_sleep(int timeout) {
+		try {
+			Thread.sleep(timeout);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public String doGetText(By locator) {
 		return getElement(locator).getText();
 
 	}
-	
+
 	public String doGetTitle() {
 		return driver.getTitle();
 	}
-	
-	
+
 	// ************************************<<<<<<<<<<<<<<<<<<Select, DropDown
 	// utility>>>>>>>>>>>>>>>>>>***********************************
 
@@ -76,7 +89,6 @@ public class WebElementUtil {
 
 		Select select = new Select(getElement(locator));
 		select.selectByVisibleText(Value);
-
 
 	}
 
@@ -216,8 +228,8 @@ public class WebElementUtil {
 		}
 
 	}
-	// ************************************<<<<<<<<<<<<<<<<<<Actions
-	// utility>>>>>>>>>>>>>>>>>>***********************************
+	// ************************************<<<<<<<<<<<<<<<<<< Actions
+	// utility >>>>>>>>>>>>>>>>>>***********************************
 
 	public void do_DragAndDrop(By source, By target) {
 		Actions action = new Actions(driver);
@@ -240,6 +252,38 @@ public class WebElementUtil {
 		action.sendKeys(getElement(locator), value).build().perform();
 	}
 
+	public void domoveToElementThen_sendkeys(By locator, String value) {
+
+		Actions action = new Actions(driver);
+		action.moveToElement(getElement(locator)).sendKeys(value).build().perform();
+
+	}
+	
+	public void domoveToElementThen_sendkeys_ENTER(By locator) {
+        Actions action = new Actions(driver);
+		action.moveToElement(getElement(locator)).sendKeys(Keys.ENTER);
+
+	}
+	
+	public void domoveToElementThen_sendkeys_CLEAR(By locator) {
+        Actions action = new Actions(driver);
+		action.moveToElement(getElement(locator)).sendKeys(Keys.CLEAR);
+
+	}
+	
+	public void domoveToElementThen_sendkeys_PAGEDOWN() {
+        Actions action = new Actions(driver);
+		action.sendKeys(Keys.PAGE_DOWN);
+
+	}
+	
+	public void domoveToElementThen_sendkeys_PAGEUP() {
+        Actions action = new Actions(driver);
+		action.sendKeys(Keys.PAGE_UP);
+
+	}
+	
+
 	public void DoActionClick(By locator) {
 
 		Actions action = new Actions(driver);
@@ -253,11 +297,20 @@ public class WebElementUtil {
 
 	}
 
+	public void domoveToElementThen_click(By locator) {
+
+		Actions action = new Actions(driver);
+		action.moveToElement(getElement(locator)).click().build().perform();
+
+	}
+
 	public void doRightClickAction(By locator) {
 
 		Actions action = new Actions(driver);
 		action.contextClick(getElement(locator)).build().perform();
 	}
+	
+	
 
 	public void doClickAllCheckButton(By locator, String... values) {
 
@@ -298,9 +351,9 @@ public class WebElementUtil {
 		}
 
 	}
-	
-	
-	////////////////////////////////////////////////wait concept/////////////////////////////////////////////
+
+	//////////////////////////////////////////////// wait
+	//////////////////////////////////////////////// concept/////////////////////////////////////////////
 
 	public boolean isElementDisplayed_ThenClick(By locator, int timeout) {
 		WebElement element = null;
@@ -427,9 +480,8 @@ public class WebElementUtil {
 		WebDriverWait wait = new WebDriverWait(driver, timeOut);
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 		element.sendKeys(value);
-	
+
 	}
-	
 
 	public String waitForContainsTitleToBePresent(String title, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, timeOut);

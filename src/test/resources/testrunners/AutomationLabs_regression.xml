@@ -26,14 +26,6 @@
 	</test>
 
 
-	<test name="Naveen Page Test">
-		<!-- <parameter name="browser" value="firefox" /> -->
-
-		<classes>
-			<class name="com.automationlabs.tests.NaveenPageTest" />
-		</classes>
-	</test>
-
 
 </suite>
 	

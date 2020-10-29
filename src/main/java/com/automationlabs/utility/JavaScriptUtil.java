@@ -1,7 +1,8 @@
 package com.automationlabs.utility;
 
 	
-	import org.openqa.selenium.JavascriptExecutor;
+	import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 	import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.WebElement;
 
@@ -78,6 +79,11 @@ package com.automationlabs.utility;
 		public void scrollIntoView(WebElement element) {
 			JavascriptExecutor js = ((JavascriptExecutor) driver);
 			js.executeScript("arguments[0].scrollIntoView(true);", element);
+		}
+		
+		public void scrollIntoView(By locator) {
+			JavascriptExecutor js = ((JavascriptExecutor) driver);
+			js.executeScript("arguments[0].scrollIntoView(true);", locator);
 		}
 
 		public String getBrowserInfo() {

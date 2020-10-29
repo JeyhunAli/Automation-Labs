@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.automationlabs.base.BasePage;
-import com.automationlabs.utility.ConstantsUtility;
 import com.automationlabs.utility.WebElementUtil;
 
 public class NaveenPage extends BasePage {
@@ -14,7 +13,9 @@ public class NaveenPage extends BasePage {
 
 	By NaveenAutomationLabs = By.xpath("//h2/a[text()='Welcome to Naveen AutomationLabs']");
 	By lifeMotto = By.xpath("(//div[@class='post-content entry-content']/p)[2]");
-	By meeting = By.xpath("//a[text()='Naveen AutomationLabs – Bangalore Meet Up (4th May)']");
+	//By meeting = By.xpath("//a[text()='Naveen AutomationLabs – Bangalore Meet Up (4th May)']");
+	By meetingLink = By.linkText("Naveen AutomationLabs – Bangalore Meet Up (4th May)");
+
 
 	public NaveenPage(WebDriver driver) {
 
@@ -27,7 +28,6 @@ public class NaveenPage extends BasePage {
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 //		return eleUtil.waitFor_Full_TitleToBePresent(ConstantsUtility.NaveenPageTitle, 10);
@@ -50,8 +50,21 @@ public class NaveenPage extends BasePage {
      return eleUtil.doGetText(lifeMotto);
 }
 
-	public void click_and_GO_Meeting() {
-		eleUtil.DoActionClick(meeting);
+	public MeetingPage click_and_GO_Meeting() {
+		eleUtil.DoActionClick(meetingLink);
+		return new MeetingPage(driver);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
